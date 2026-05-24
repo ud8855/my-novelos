@@ -1,39 +1,15 @@
-# ==============
-# NovelOS 事件协议
-# ==============
-# 核心总线上的事件标准。
-
+# 事件协议 v1.0
 事件格式:
-  事件ID: 字符串 (UUID)
-  事件类型: 字符串 (见下)
-  来源模块: 字符串 (模块编号)
-  时间戳: ISO8601
-  载荷: 字典 (数据结构必须来自协议层)
-  优先级: 整数 (0-10，10最高)
-
-核心事件类型:
-  系统:
-    - system.init.start
-    - system.init.complete
-    - system.shutdown
-    - system.error
-  创作:
-    - novel.create
-    - novel.chapter.start
-    - novel.chapter.complete
-    - novel.foreshadowing.plant
-    - novel.foreshadowing.resolve
-  状态:
-    - state.world.update
-    - state.character.update
-    - state.character.death
-  审核:
-    - audit.fail
-    - audit.pass
-  AI:
-    - ai.model.call.start
-    - ai.model.call.end
-    - ai.model.call.error
-
-订阅规则:
-  模块只能订阅其允许依赖的层发出的事件（依据模块依赖规则）。
+  事件ID: UUID
+  类型: str
+  来源: 模块编号
+  时间: ISO8601
+  载荷: dict(来自协议层)
+  优先级: 0-10
+事件类型:
+  系统: [init.start, init.complete, shutdown, error]
+  创作: [novel.create, chapter.start, chapter.complete, foreshadowing.plant, foreshadowing.resolve]
+  状态: [world.update, character.update, character.death]
+  审核: [audit.fail, audit.pass]
+  AI: [model.call.start, model.call.end, model.call.error]
+订阅规则: 只能订阅允许依赖层的事件
