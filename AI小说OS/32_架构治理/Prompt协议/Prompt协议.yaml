@@ -1,0 +1,12 @@
+# NovelOS Prompt协议 v1.0
+模板结构:
+  ID: str
+  版本: str
+  类型: system|user
+  内容: 用{参数}占位
+  必需参数: list
+  可选参数: list
+  输出格式: str
+存放: 01_配置中心/Prompt配置/
+调用: 上下文系统加载填充 -> 模型协同发送
+禁止: [代码拼接Prompt, 绕过配置中心修改模板]
