@@ -1,0 +1,6 @@
+# NovelOS 接口协议 v1.0
+方法命名: [get_XXX, set_XXX, update_XXX, delete_XXX, query_XXX, process_XXX, validate_XXX, calculate_XXX]
+参数: 第一参数可接受配置覆盖(**kwargs)
+返回值: {"成功": bool, "数据": any, "错误": str}
+异常: 禁止直接抛出, 必须捕获并返回错误字典, 原始异常记日志
+兼容: 新增参数必须有默认值
