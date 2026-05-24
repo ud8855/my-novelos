@@ -1,25 +1,6 @@
-# ==============
-# NovelOS 接口协议
-# ==============
-# 规定每个模块对外暴露的公共方法命名与签名规范。
-
-方法命名:
-  获取数据: get_XXX
-  设置数据: set_XXX
-  更新数据: update_XXX
-  删除数据: delete_XXX (仅允许软删除)
-  查询: query_XXX
-  处理: process_XXX
-  验证: validate_XXX
-  计算: calculate_XXX
-
-参数规范:
-  第一个参数: 必须能接受一个字典形式的配置覆盖（**kwargs）
-  返回值: 必须返回字典 {'成功': True/False, '数据': ..., '错误': 错误信息}
-
-异常处理:
-  所有公共方法禁止直接抛出异常，必须捕获并返回错误字典。
-  内部使用日志记录原始异常。
-
-版本兼容:
-  公共接口增加新参数时，必须提供默认值以保持向后兼容。
+# 接口协议 v1.0
+方法命名: [get_XXX, set_XXX, update_XXX, delete_XXX, query_XXX, process_XXX, validate_XXX, calculate_XXX]
+参数: 第一参数可接受配置覆盖(**kwargs)
+返回值: {"成功": bool, "数据": any, "错误": str}
+异常: 禁止直接抛出, 必须捕获并返回错误字典, 原始异常记日志
+兼容: 新增参数必须有默认值
