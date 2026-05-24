@@ -1,45 +1,11 @@
-# =================
-# NovelOS Import白名单
-# =================
-# 规定每个层可以使用的导入类型。
-# 禁止导入未列出的层或模块。
-
-全局允许的标准库:
-  - os
-  - sys
-  - json
-  - yaml
-  - logging
-  - typing
-  - dataclasses
-  - abc
-  - enum
-  - time
-  - copy
-  - uuid
-  - pathlib
-  - functools
-  - inspect
-  - importlib
-  - hashlib
-  - re
-
-允许的第三方库 (需在配置中声明):
-  - requests
-  - pydantic
-  - numpy (仅算法层)
-  - faiss-cpu (向量记忆)
-  - qdrant-client (向量数据库)
-  - python-docx (导出)
-  - fastapi (Web API)
-  - uvicorn (Web服务器)
-
-层级别白名单 (示例):
-  "06_数据层": 只能导入标准库 + pydantic
-  "15_Agent生态": 不可导入 requests (必须通过模型协同)
-  "21_API模型": 可导入 requests, openai 等 SDK
-  "25_UI界面": 可导入前端框架，但不可导入数据库驱动
-  "17_爽感算法": 可导入 numpy
-  "27_日志监控": 仅标准库 logging
-
-任何导入未在清单中的第三方库，需提交架构治理委员会审核。
+# Import白名单 v1.0
+标准库允许: [os, sys, json, yaml, logging, typing, dataclasses, abc, enum, time, copy, uuid, pathlib, functools, inspect, importlib, hashlib, re]
+第三方允许: [requests, pydantic, numpy(仅17), faiss-cpu, qdrant-client, python-docx, fastapi, uvicorn]
+层限制:
+  "06": 标准库+pydantic
+  "15": 禁止requests
+  "21": 可requests/openai等
+  "25": 禁止数据库驱动
+  "17": 可numpy
+  "27": 仅logging
+其他第三方需审核。
