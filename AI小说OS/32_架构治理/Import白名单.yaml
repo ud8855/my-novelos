@@ -1,0 +1,45 @@
+# =================
+# NovelOS Import白名单
+# =================
+# 规定每个层可以使用的导入类型。
+# 禁止导入未列出的层或模块。
+
+全局允许的标准库:
+  - os
+  - sys
+  - json
+  - yaml
+  - logging
+  - typing
+  - dataclasses
+  - abc
+  - enum
+  - time
+  - copy
+  - uuid
+  - pathlib
+  - functools
+  - inspect
+  - importlib
+  - hashlib
+  - re
+
+允许的第三方库 (需在配置中声明):
+  - requests
+  - pydantic
+  - numpy (仅算法层)
+  - faiss-cpu (向量记忆)
+  - qdrant-client (向量数据库)
+  - python-docx (导出)
+  - fastapi (Web API)
+  - uvicorn (Web服务器)
+
+层级别白名单 (示例):
+  "06_数据层": 只能导入标准库 + pydantic
+  "15_Agent生态": 不可导入 requests (必须通过模型协同)
+  "21_API模型": 可导入 requests, openai 等 SDK
+  "25_UI界面": 可导入前端框架，但不可导入数据库驱动
+  "17_爽感算法": 可导入 numpy
+  "27_日志监控": 仅标准库 logging
+
+任何导入未在清单中的第三方库，需提交架构治理委员会审核。
