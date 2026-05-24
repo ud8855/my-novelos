@@ -1,0 +1,11 @@
+# NovelOS Import白名单 v1.0
+标准库允许: [os, sys, json, yaml, logging, typing, dataclasses, abc, enum, time, copy, uuid, pathlib, functools, inspect, importlib, hashlib, re]
+第三方允许: [requests, pydantic, numpy(仅17), faiss-cpu, qdrant-client, python-docx, fastapi, uvicorn]
+层限制:
+  "06": 标准库+pydantic
+  "15": 禁止requests
+  "21": 可requests/openai等
+  "25": 禁止数据库驱动
+  "17": 可numpy
+  "27": 仅logging
+其他第三方需审核。
