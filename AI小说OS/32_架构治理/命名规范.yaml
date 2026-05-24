@@ -1,0 +1,38 @@
+# ================
+# NovelOS 命名规范
+# ================
+# 适用于所有文件名、类名、函数名、变量名。
+
+文件命名:
+  模块主文件: 目录名.py  (例如: 内核调度器/内核调度器.py)
+  包初始化: __init__.py
+  配置文件: 描述_配置.yaml 或 .json
+  规则文件: 描述_规则.yaml
+  测试文件: test_模块名.py
+
+类命名:
+  使用英文大驼峰 (PascalCase)
+  示例: PipelineScheduler, CharacterManager, WorldEngine
+  后缀约定:
+    Manager: 管理类
+    Engine: 核心引擎
+    Agent: 智能体
+    Handler: 事件处理器
+    Protocol: 协议类
+
+函数命名:
+  使用英文小写下划线 (snake_case)
+  示例: get_chapter(), update_state(), process_event()
+
+变量命名:
+  同函数命名，英文小写下划线
+  布尔变量以 is_ / has_ / can_ 开头
+
+常量命名:
+  英文全大写下划线
+  示例: MAX_RETRY, DEFAULT_MODEL
+
+禁止:
+  - 单个字母变量（循环变量除外，如 i, j, k）
+  - 拼音
+  - 缩写（除非广泛认知，如 API, URL）
