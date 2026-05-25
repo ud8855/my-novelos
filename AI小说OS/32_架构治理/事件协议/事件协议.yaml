@@ -1,0 +1,15 @@
+# NovelOS 事件协议 v1.0
+事件格式:
+  事件ID: UUID
+  类型: str
+  来源: 模块编号
+  时间: ISO8601
+  载荷: dict(来自协议层)
+  优先级: 0-10
+事件类型:
+  系统: [init.start, init.complete, shutdown, error]
+  创作: [novel.create, chapter.start, chapter.complete, foreshadowing.plant, foreshadowing.resolve]
+  状态: [world.update, character.update, character.death]
+  审核: [audit.fail, audit.pass]
+  AI: [model.call.start, model.call.end, model.call.error]
+订阅规则: 只能订阅允许依赖层的事件
